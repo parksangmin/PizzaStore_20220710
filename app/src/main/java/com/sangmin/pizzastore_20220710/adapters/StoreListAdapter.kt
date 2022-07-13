@@ -29,6 +29,8 @@ class StoreListAdapter(
         nameTxt.text = mList[position].name
         scoreTxt.text = "(${mList[position].score})"
 
+
+
         return row
 
     }
