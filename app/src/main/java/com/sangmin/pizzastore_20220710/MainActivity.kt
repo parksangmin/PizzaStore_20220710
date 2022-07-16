@@ -1,5 +1,6 @@
 package com.sangmin.pizzastore_20220710
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.PagerAdapter
@@ -22,4 +23,5 @@ class MainActivity : AppCompatActivity() {
 
         mainTabLayout.setupWithViewPager(mainViewPager)
     }
-}
+
+    }

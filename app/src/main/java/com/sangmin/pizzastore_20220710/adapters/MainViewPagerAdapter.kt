@@ -26,6 +26,7 @@ class MainViewPagerAdapter(
 
     }
 
+//    제목을 나타내기 위해서
     override fun getPageTitle(position: Int): CharSequence? {
         when(position) {
             0 -> {

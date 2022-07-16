@@ -9,6 +9,8 @@ import android.widget.TextView
 import com.sangmin.pizzastore_20220710.R
 import com.sangmin.pizzastore_20220710.StoreData
 
+
+// val 쪽을 만든 이유는 아래쪽에서 활용 할 수  가 있어서 입니다
 class StoreListAdapter(
     val mContext : Context,
     val resId : Int,
