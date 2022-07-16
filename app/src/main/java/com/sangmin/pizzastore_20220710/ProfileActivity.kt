@@ -15,13 +15,12 @@ class ProfileActivity : AppCompatActivity() {
 //       val 입력값변수 = 들고들어갈데이터
 
         changeBtn.setOnClickListener {
-            val inputNick = changeNicEdt.text.toString()
+            val inputData = changeNicEdt.text.toString()
             val resultIntent = Intent()
-            resultIntent.putExtra("nick", inputNick)
+            resultIntent.putExtra("data", inputData)
             setResult(RESULT_OK, resultIntent)
             finish()
         }
-
 
     }
 }
