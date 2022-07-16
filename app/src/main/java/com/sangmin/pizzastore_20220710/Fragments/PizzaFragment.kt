@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import com.sangmin.pizzastore_20220710.DetailStoreActivity
 import com.sangmin.pizzastore_20220710.R
@@ -30,6 +29,8 @@ class PizzaFragment: Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+// viewPager에 의해 피자 프레그먼트가 사라때, mList도 같이 클리어 해준다
+// mList.clear()
 
         mList.add(StoreData("피자헛",4.2, "1588-5588",
              "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FnkQca%2FbtqwVT4rrZo%2FymhFqW9uRbzrmZTxUU1QC1%2Fimg.jpg"))
