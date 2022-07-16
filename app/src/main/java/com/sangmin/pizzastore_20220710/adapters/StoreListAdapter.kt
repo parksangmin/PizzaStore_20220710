@@ -28,6 +28,7 @@ class StoreListAdapter(
         val nameTxt = row.findViewById<TextView>(R.id.nameTxt)
         val scoreTxt = row.findViewById<TextView>(R.id.scoreTxt)
 
+
         nameTxt.text = mList[position].name
         scoreTxt.text = "(${mList[position].score})"
 
