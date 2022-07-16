@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.sangmin.pizzastore_20220710.R
 import com.sangmin.pizzastore_20220710.StoreData
 
@@ -27,10 +29,14 @@ class StoreListAdapter(
 
         val nameTxt = row.findViewById<TextView>(R.id.nameTxt)
         val scoreTxt = row.findViewById<TextView>(R.id.scoreTxt)
+        val storeLogoImg = row.findViewById<ImageView>(R.id.storeLogoImg)
 
 
         nameTxt.text = mList[position].name
         scoreTxt.text = "(${mList[position].score})"
+        Glide.with(mContext)   // 현재 이 Glide를 사용하고 있는 Context
+            .load(mList[position].logoUrl)   // 실제 들어갈 이미지 url
+            .into(storeLogoImg)     // 이미지가 들어갈 xml 태그``
 
 
 

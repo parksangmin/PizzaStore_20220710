@@ -6,6 +6,6 @@ class StoreData(
     val name : String,
     val score : Double,
     val phoneNum : String,
-    val logUrl : String,
+    val logoUrl : String,
 ) : Serializable{
 }

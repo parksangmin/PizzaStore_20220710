@@ -45,6 +45,7 @@ class PizzaFragment: Fragment() {
 
 
         pizzaStoreListView.setOnItemClickListener { adapterView, view, i, l ->
+//            인테트로 현재 액티비티에서 DetailStoreActivity로 이동하는 코드
             val myIntent = Intent(requireContext(), DetailStoreActivity::class.java)
             myIntent.putExtra("storeData",mList[i])
             startActivity(myIntent)
