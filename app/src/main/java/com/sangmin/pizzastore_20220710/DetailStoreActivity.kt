@@ -1,9 +1,13 @@
 package com.sangmin.pizzastore_20220710
 
+import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.normal.TedPermission
 import kotlinx.android.synthetic.main.activity_detail_store.*
 import kotlinx.android.synthetic.main.activity_detail_store.phoneNumTxt
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -12,7 +16,6 @@ class DetailStoreActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_store)
-
 
 
 //      Intent의 첨부된 데이터 받아오는 코드
@@ -27,9 +30,30 @@ class DetailStoreActivity : AppCompatActivity() {
 
 //         주문하기 버튼을 눌렀을 때
         callBtn.setOnClickListener {
-            val myUri = Uri.parse("tel:${phoneNumTxt.text}")
-            val myIntent = Intent(Intent.ACTION_DIAL, myUri)
-            startActivity(myIntent)
+
+            val pl = object : PermissionListener {
+                //                권한을 획득했을 경우 진행할 코드
+                override fun onPermissionGranted() {
+                    val myUri = Uri.parse("tel:${phoneNumTxt.text}")
+                    val myIntent = Intent(Intent.ACTION_DIAL, myUri)
+                    startActivity(myIntent)
+
+                }
+
+                //                권한 획득에 실패했을 때 진행할 코드
+                override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
+                    Toast.makeText(this@DetailStoreActivity, "권한이 없습니다", Toast.LENGTH_SHORT).show()
+
+                }
+
+
+            }
+
+            TedPermission.create()
+                .setPermissionListener(pl)
+                .setPermissions(Manifest.permission.CALL_PHONE)
+                .check()
+
         }
 
 
@@ -39,7 +63,7 @@ class DetailStoreActivity : AppCompatActivity() {
 //        권한을 획득할 필요가 있다 => 차후에 라이브러리를 활용해서 진행
 //        앱이 죽지만, 문법적으로는 틀린게 없는 상태태
 //        그래서 굳이 이걸 잘 안쓴다(다이얼을 많이 쓴다)
-    //       callBtn.setOnClickListener {
+        //       callBtn.setOnClickListener {
 //            val myUri = Uri.parse("tel:${phoneNumTxt.text}")
 //            val myIntent = Intent(Intent.ACTION_CALL, myUri)
 //            startActivity(myIntent)
